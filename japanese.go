@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"os/exec"
 	"time"
 )
 
@@ -18,19 +19,23 @@ import (
 // slice should be in format of string slice with each as individual letters
 
 func main() {
-	hiragana := []string{"あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ"}
-
-	words := hiragana
+	cmd := exec.Command("clear") //Linux example, its tested
+	cmd.Stdout = os.Stdout
+	cmd.Run()
+	//hiragana := []string{"あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ"}
+	row4 := []string{"た", "ち", "つ", "て", "と"}
+	words := row4
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(words), func(i, j int) {
 		words[i], words[j] = words[j], words[i]
 	})
-	fmt.Println(words)
+
+	fmt.Println(correctAnswer(words))
 	fmt.Print("insert y value here: ")
 	input := bufio.NewScanner(os.Stdin)
 	input.Scan()
 	fmt.Println(input.Text())
-	fmt.Println(correctAnswer(words))
+	fmt.Println(words)
 }
 
 func correctAnswer(input []string) []string {
@@ -50,6 +55,11 @@ func correctAnswer(input []string) []string {
 		"す": "su",
 		"せ": "se",
 		"そ": "so",
+		"た": "ta",
+		"ち": "chi",
+		"つ": "tsu",
+		"て": "te",
+		"と": "to",
 	}
 
 	output := []string{}
