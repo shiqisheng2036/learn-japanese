@@ -23,7 +23,7 @@ func main() {
 	hr5 := []string{"な", "に", "ぬ", "ね", "の"}
 	h := [][]string{hr1, hr2, hr3, hr4, hr5}
 	words := make([]string, 0)
-	for _, v := range h {
+	for _, v := range h[3:] {
 		words = append(words, v...)
 	}
 
@@ -33,11 +33,13 @@ func main() {
 		words[i], words[j] = words[j], words[i]
 	})
 
+	numCorrectFirstTry := 0
 	// Quiz the user for each word.
 	for _, word := range words {
 		fmt.Println(word)
 		fmt.Print("Type in your answer:")
 		complete := false
+		tries := 0
 		for !complete {
 			input := bufio.NewScanner(os.Stdin)
 			input.Scan()
@@ -48,13 +50,17 @@ func main() {
 			if input.Text() == ans {
 				fmt.Println("Correct!")
 				complete = true
+				if tries == 0 {
+					numCorrectFirstTry += 1
+				}
 			} else {
 				fmt.Println("Incorrect. Try again.")
+				tries += 1
 			}
 		}
 	}
 
-	fmt.Println("Practice complete.")
+	fmt.Printf("Practice complete. Percent correct first try: %g\n", float64(numCorrectFirstTry)/float64(len(words)))
 }
 
 func correctAnswer(input string) (string, error) {
