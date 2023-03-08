@@ -23,7 +23,7 @@ func main() {
 	hr5 := []string{"な", "に", "ぬ", "ね", "の"}
 	h := [][]string{hr1, hr2, hr3, hr4, hr5}
 	words := make([]string, 0)
-	for _, v := range h[3:] {
+	for _, v := range h {
 		words = append(words, v...)
 	}
 
@@ -34,6 +34,7 @@ func main() {
 	})
 
 	numCorrectFirstTry := 0
+	t1 := time.Now()
 	// Quiz the user for each word.
 	for _, word := range words {
 		fmt.Println(word)
@@ -59,8 +60,10 @@ func main() {
 			}
 		}
 	}
+	t2 := time.Now()
 
 	fmt.Printf("Practice complete. Percent correct first try: %g\n", float64(numCorrectFirstTry)/float64(len(words)))
+	fmt.Printf("Time elapsed: %v\n", t2.Sub(t1))
 }
 
 func correctAnswer(input string) (string, error) {
