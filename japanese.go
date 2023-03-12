@@ -16,12 +16,15 @@ func main() {
 	cmd.Run()
 
 	// Builds list of hiragana to practice.
-	hr1 := []string{"あ", "い", "う", "え", "お"}
-	hr2 := []string{"か", "き", "く", "け", "こ"}
-	hr3 := []string{"さ", "し", "す", "せ", "そ"}
-	hr4 := []string{"た", "ち", "つ", "て", "と"}
-	hr5 := []string{"な", "に", "ぬ", "ね", "の"}
-	h := [][]string{hr1, hr2, hr3, hr4, hr5}
+	/*
+		hr1 := []string{"あ", "い", "う", "え", "お"}
+		hr2 := []string{"か", "き", "く", "け", "こ"}
+		hr3 := []string{"さ", "し", "す", "せ", "そ"}
+		hr4 := []string{"た", "ち", "つ", "て", "と"}
+		hr5 := []string{"な", "に", "ぬ", "ね", "の"}
+	*/
+	hr6 := []string{"は", "ひ", "ふ", "へ", "ほ"}
+	h := [][]string{hr6}
 	words := make([]string, 0)
 	for _, v := range h {
 		words = append(words, v...)
@@ -93,6 +96,11 @@ func correctAnswer(input string) (string, error) {
 		"ぬ": "nu",
 		"ね": "ne",
 		"の": "no",
+		"は": "ha",
+		"ひ": "hi",
+		"ふ": "fu",
+		"へ": "he",
+		"ほ": "ho",
 	}
 
 	val, ok := hiraganaToLetters[input]
