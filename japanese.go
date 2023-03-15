@@ -24,7 +24,12 @@ func main() {
 		hr5 := []string{"な", "に", "ぬ", "ね", "の"}
 	*/
 	hr6 := []string{"は", "ひ", "ふ", "へ", "ほ"}
-	h := [][]string{hr6}
+	hr7 := []string{"ま", "み", "む", "め", "も"}
+	hr8 := []string{"や", "ゆ", "よ"}
+	hr9 := []string{"ら", "り", "る", "れ", "ろ"}
+	hr10 := []string{"わ", "を"}
+	hr11 := []string{"ん"}
+	h := [][]string{hr6, hr7, hr8, hr9, hr10, hr11}
 	words := make([]string, 0)
 	for _, v := range h {
 		words = append(words, v...)
@@ -51,7 +56,9 @@ func main() {
 			if err != nil {
 				fmt.Println(err)
 			}
-			if input.Text() == ans {
+			if input.Text() == "?" {
+				fmt.Println(ans)
+			} else if input.Text() == ans {
 				fmt.Println("Correct!")
 				complete = true
 				if tries == 0 {
@@ -101,6 +108,22 @@ func correctAnswer(input string) (string, error) {
 		"ふ": "fu",
 		"へ": "he",
 		"ほ": "ho",
+		"ま": "ma",
+		"み": "mi",
+		"む": "mu",
+		"め": "me",
+		"も": "mo",
+		"や": "ya",
+		"ゆ": "yu",
+		"よ": "yo",
+		"ら": "ra",
+		"り": "ri",
+		"る": "ru",
+		"れ": "re",
+		"ろ": "ro",
+		"わ": "wa",
+		"を": "wo",
+		"ん": "n",
 	}
 
 	val, ok := hiraganaToLetters[input]
