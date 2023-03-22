@@ -16,22 +16,33 @@ func main() {
 	cmd.Run()
 
 	// Builds list of hiragana to practice.
-	/*
-		hr1 := []string{"あ", "い", "う", "え", "お"}
-		hr2 := []string{"か", "き", "く", "け", "こ"}
-		hr3 := []string{"さ", "し", "す", "せ", "そ"}
-		hr4 := []string{"た", "ち", "つ", "て", "と"}
-		hr5 := []string{"な", "に", "ぬ", "ね", "の"}
-	*/
+	hr1 := []string{"あ", "い", "う", "え", "お"}
+	hr2 := []string{"か", "き", "く", "け", "こ"}
+	hr3 := []string{"さ", "し", "す", "せ", "そ"}
+	hr4 := []string{"た", "ち", "つ", "て", "と"}
+	hr5 := []string{"な", "に", "ぬ", "ね", "の"}
 	hr6 := []string{"は", "ひ", "ふ", "へ", "ほ"}
 	hr7 := []string{"ま", "み", "む", "め", "も"}
 	hr8 := []string{"や", "ゆ", "よ"}
 	hr9 := []string{"ら", "り", "る", "れ", "ろ"}
 	hr10 := []string{"わ", "を"}
 	hr11 := []string{"ん"}
-	h := [][]string{hr6, hr7, hr8, hr9, hr10, hr11}
+	dakuOn1 := []string{"が", "ぎ", "ぐ", "げ", "ご"}
+	dakuOn2 := []string{"ざ", "じ", "ず", "ぜ", "ぞ"}
+	dakuOn3 := []string{"だ", "ぢ", "づ", "で", "ど"}
+	dakuOn4 := []string{"ば", "び", "ぶ", "べ", "ぼ"}
+	dakuOn5 := []string{"ぱ", "ぴ", "ぷ", "ぺ", "ぽ"}
+	h := [][]string{hr1, hr2, hr3, hr4, hr5, hr6, hr7, hr8, hr9, hr10, hr11}
+	allDakuOn := [][]string{dakuOn1, dakuOn2, dakuOn3, dakuOn4, dakuOn5}
+	var chosen [][]string
+	if false {
+		chosen = h
+	} else {
+		chosen = allDakuOn
+	}
+
 	words := make([]string, 0)
-	for _, v := range h {
+	for _, v := range chosen {
 		words = append(words, v...)
 	}
 
@@ -124,6 +135,31 @@ func correctAnswer(input string) (string, error) {
 		"わ": "wa",
 		"を": "wo",
 		"ん": "n",
+		"が": "ga",
+		"ぎ": "gi",
+		"ぐ": "gu",
+		"げ": "ge",
+		"ご": "go",
+		"ざ": "za",
+		"じ": "ji",
+		"ず": "zu",
+		"ぜ": "ze",
+		"ぞ": "zo",
+		"だ": "da",
+		"ぢ": "ji",
+		"づ": "zu",
+		"で": "de",
+		"ど": "do",
+		"ば": "ba",
+		"び": "bi",
+		"ぶ": "bu",
+		"べ": "be",
+		"ぼ": "bo",
+		"ぱ": "pa",
+		"ぴ": "pi",
+		"ぷ": "pu",
+		"ぺ": "pe",
+		"ぽ": "po",
 	}
 
 	val, ok := hiraganaToLetters[input]
